@@ -87,7 +87,7 @@ public class DbRepositoty {
 
     public static HashMap<String, Double[]> getStudentsOrderBy() {
         String sql = "SELECT name, distance_hometown, avg_mark FROM students WHERE " +
-                "distance_hometown > 0 ORDER BY avg_mark";
+                "distance_hometown > 0 ORDER BY distance_hometown DESC";
 
         var res = new HashMap<String, Double[]>();
 
