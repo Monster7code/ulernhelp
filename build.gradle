@@ -27,6 +27,8 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.47.1.0'
+
+    implementation group: 'jfree', name: 'jfreechart', version: '1.0.13'
 }
 test {
     useJUnitPlatform()

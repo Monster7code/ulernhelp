@@ -4,6 +4,7 @@ import org.example.Student;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -85,11 +86,11 @@ public class DbRepositoty {
         return res;
     }
 
-    public static HashMap<String, Double[]> getStudentsOrderBy() {
+    public static List<Student> getStudentsOrderBy() {
         String sql = "SELECT name, distance_hometown, avg_mark FROM students WHERE " +
                 "distance_hometown > 0 ORDER BY distance_hometown DESC";
 
-        var res = new HashMap<String, Double[]>();
+        List<Student> res = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(dbPath);
              Statement stmt = conn.createStatement();
@@ -99,7 +100,9 @@ public class DbRepositoty {
                 String name = rs.getString("name");
                 double distanceHometown = rs.getDouble("distance_hometown");
                 double avgMark = rs.getDouble("avg_mark");
-                res.put(name, new Double[]{distanceHometown, avgMark});
+
+                Student nwst = new Student(name, distanceHometown, avgMark);
+                res.add(nwst);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

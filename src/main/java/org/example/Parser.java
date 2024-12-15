@@ -40,7 +40,6 @@ public class Parser {
                 for (int indexMark: list_index_mark) {
                     avgMark += Double.parseDouble(values[indexMark]);
                 }
-                avgMark = avgMark / list_index_mark.size();
 
                 Distance distance = new Distance();
 
